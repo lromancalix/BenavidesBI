@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{37F94984-5DAF-4F5C-BFC2-DCD799D85F83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MODEL", "MODEL", "{B0F774B9-A24F-49E8-8B57-7ACDBD306F5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SERVICE", "SERVICE", "{BCB48CFF-E77B-422F-AA4F-BACD62348186}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CORE", "CORE", "{610950F8-39B5-413B-82E9-45DAEFD8BDD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WEB", "WEB", "{F7458E19-9CC9-4A07-A179-9EF7DF3B93B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benavides.WEB", "Benavides.WEB\Benavides.WEB.csproj", "{B2BC8552-C22B-444B-824F-0A86580F4872}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2BC8552-C22B-444B-824F-0A86580F4872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2BC8552-C22B-444B-824F-0A86580F4872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2BC8552-C22B-444B-824F-0A86580F4872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2BC8552-C22B-444B-824F-0A86580F4872}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B2BC8552-C22B-444B-824F-0A86580F4872} = {F7458E19-9CC9-4A07-A179-9EF7DF3B93B4}
+	EndGlobalSection
+EndGlobal
