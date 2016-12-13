@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BenavidesBIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblLaboratorio">
+          <Key>
+            <PropertyRef Name="idLaboratorio" />
+          </Key>
+          <Property Name="idLaboratorio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="laboratorio" Type="varchar" MaxLength="50" />
+          <Property Name="activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblPromocionesAcumulacion">
+          <Key>
+            <PropertyRef Name="idPromocionAcumulacion" />
+          </Key>
+          <Property Name="idPromocionAcumulacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="int" />
+          <Property Name="producto" Type="varchar" MaxLength="50" />
+          <Property Name="promocion" Type="varchar" MaxLength="150" />
+          <Property Name="regla" Type="varchar" MaxLength="150" />
+          <Property Name="limite" Type="varchar" MaxLength="50" />
+          <Property Name="periodo" Type="varchar" MaxLength="50" />
+          <Property Name="fechaInicio" Type="datetime" />
+          <Property Name="fechaFin" Type="datetime" />
+          <Property Name="fechaSolicitud" Type="datetime" />
+          <Property Name="cupon" Type="datetime" />
+          <Property Name="comentario" Type="varchar" MaxLength="150" />
+          <Property Name="idSegmento" Type="int" Nullable="false" />
+          <Property Name="idLaboratorio" Type="int" Nullable="false" />
+          <Property Name="codigoRegala" Type="varchar" MaxLength="50" />
+          <Property Name="fechaCreacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblSegmento">
+          <Key>
+            <PropertyRef Name="idSegmento" />
+          </Key>
+          <Property Name="idSegmento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="segmento" Type="varchar" MaxLength="50" />
+          <Property Name="activo" Type="bit" />
+        </EntityType>
+        <Association Name="FK_tblPromocionesAcumulacion_tblLaboratorio">
+          <End Role="tblLaboratorio" Type="Self.tblLaboratorio" Multiplicity="1" />
+          <End Role="tblPromocionesAcumulacion" Type="Self.tblPromocionesAcumulacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLaboratorio">
+              <PropertyRef Name="idLaboratorio" />
+            </Principal>
+            <Dependent Role="tblPromocionesAcumulacion">
+              <PropertyRef Name="idLaboratorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPromocionesAcumulacion_tblSegmento">
+          <End Role="tblSegmento" Type="Self.tblSegmento" Multiplicity="1" />
+          <End Role="tblPromocionesAcumulacion" Type="Self.tblPromocionesAcumulacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSegmento">
+              <PropertyRef Name="idSegmento" />
+            </Principal>
+            <Dependent Role="tblPromocionesAcumulacion">
+              <PropertyRef Name="idSegmento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BenavidesBIModelStoreContainer">
+          <EntitySet Name="tblLaboratorio" EntityType="Self.tblLaboratorio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPromocionesAcumulacion" EntityType="Self.tblPromocionesAcumulacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSegmento" EntityType="Self.tblSegmento" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblPromocionesAcumulacion_tblLaboratorio" Association="Self.FK_tblPromocionesAcumulacion_tblLaboratorio">
+            <End Role="tblLaboratorio" EntitySet="tblLaboratorio" />
+            <End Role="tblPromocionesAcumulacion" EntitySet="tblPromocionesAcumulacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPromocionesAcumulacion_tblSegmento" Association="Self.FK_tblPromocionesAcumulacion_tblSegmento">
+            <End Role="tblSegmento" EntitySet="tblSegmento" />
+            <End Role="tblPromocionesAcumulacion" EntitySet="tblPromocionesAcumulacion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BenavidesBIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblLaboratorio">
+          <Key>
+            <PropertyRef Name="idLaboratorio" />
+          </Key>
+          <Property Name="idLaboratorio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="laboratorio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="tblPromocionesAcumulacion" Relationship="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblLaboratorio" FromRole="tblLaboratorio" ToRole="tblPromocionesAcumulacion" />
+        </EntityType>
+        <EntityType Name="tblSegmento">
+          <Key>
+            <PropertyRef Name="idSegmento" />
+          </Key>
+          <Property Name="idSegmento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="segmento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="tblPromocionesAcumulacion" Relationship="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblSegmento" FromRole="tblSegmento" ToRole="tblPromocionesAcumulacion" />
+        </EntityType>
+        <EntityContainer Name="BenavidesBIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblLaboratorio" EntityType="Self.tblLaboratorio" />
+          <EntitySet Name="tblSegmento" EntityType="Self.tblSegmento" />
+          <EntitySet Name="tblPromocionesAcumulacion" EntityType="BenavidesBIModel.tblPromocionesAcumulacion" />
+          <AssociationSet Name="FK_tblPromocionesAcumulacion_tblLaboratorio" Association="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblLaboratorio">
+            <End Role="tblLaboratorio" EntitySet="tblLaboratorio" />
+            <End Role="tblPromocionesAcumulacion" EntitySet="tblPromocionesAcumulacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPromocionesAcumulacion_tblSegmento" Association="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblSegmento">
+            <End Role="tblSegmento" EntitySet="tblSegmento" />
+            <End Role="tblPromocionesAcumulacion" EntitySet="tblPromocionesAcumulacion" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblPromocionesAcumulacion">
+          <Key>
+            <PropertyRef Name="idPromocionAcumulacion" />
+          </Key>
+          <Property Name="idPromocionAcumulacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="Int32" />
+          <Property Name="producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="promocion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="regla" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="limite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="fechaFin" Type="DateTime" Precision="3" />
+          <Property Name="fechaSolicitud" Type="DateTime" Precision="3" />
+          <Property Name="cupon" Type="DateTime" Precision="3" />
+          <Property Name="comentario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="idSegmento" Type="Int32" Nullable="false" />
+          <Property Name="idLaboratorio" Type="Int32" Nullable="false" />
+          <Property Name="codigoRegala" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblLaboratorio" Relationship="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblLaboratorio" FromRole="tblPromocionesAcumulacion" ToRole="tblLaboratorio" />
+          <NavigationProperty Name="tblSegmento" Relationship="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblSegmento" FromRole="tblPromocionesAcumulacion" ToRole="tblSegmento" />
+        </EntityType>
+        <Association Name="FK_tblPromocionesAcumulacion_tblLaboratorio">
+          <End Type="BenavidesBIModel.tblLaboratorio" Role="tblLaboratorio" Multiplicity="1" />
+          <End Type="BenavidesBIModel.tblPromocionesAcumulacion" Role="tblPromocionesAcumulacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLaboratorio">
+              <PropertyRef Name="idLaboratorio" />
+            </Principal>
+            <Dependent Role="tblPromocionesAcumulacion">
+              <PropertyRef Name="idLaboratorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPromocionesAcumulacion_tblSegmento">
+          <End Type="BenavidesBIModel.tblSegmento" Role="tblSegmento" Multiplicity="1" />
+          <End Type="BenavidesBIModel.tblPromocionesAcumulacion" Role="tblPromocionesAcumulacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSegmento">
+              <PropertyRef Name="idSegmento" />
+            </Principal>
+            <Dependent Role="tblPromocionesAcumulacion">
+              <PropertyRef Name="idSegmento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BenavidesBIModelStoreContainer" CdmEntityContainer="BenavidesBIEntities">
+          <EntitySetMapping Name="tblLaboratorio">
+            <EntityTypeMapping TypeName="BenavidesBIModel.tblLaboratorio">
+              <MappingFragment StoreEntitySet="tblLaboratorio">
+                <ScalarProperty Name="idLaboratorio" ColumnName="idLaboratorio" />
+                <ScalarProperty Name="laboratorio" ColumnName="laboratorio" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSegmento">
+            <EntityTypeMapping TypeName="BenavidesBIModel.tblSegmento">
+              <MappingFragment StoreEntitySet="tblSegmento">
+                <ScalarProperty Name="idSegmento" ColumnName="idSegmento" />
+                <ScalarProperty Name="segmento" ColumnName="segmento" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPromocionesAcumulacion">
+            <EntityTypeMapping TypeName="BenavidesBIModel.tblPromocionesAcumulacion">
+              <MappingFragment StoreEntitySet="tblPromocionesAcumulacion">
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="codigoRegala" ColumnName="codigoRegala" />
+                <ScalarProperty Name="idLaboratorio" ColumnName="idLaboratorio" />
+                <ScalarProperty Name="idSegmento" ColumnName="idSegmento" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="cupon" ColumnName="cupon" />
+                <ScalarProperty Name="fechaSolicitud" ColumnName="fechaSolicitud" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="periodo" ColumnName="periodo" />
+                <ScalarProperty Name="limite" ColumnName="limite" />
+                <ScalarProperty Name="regla" ColumnName="regla" />
+                <ScalarProperty Name="promocion" ColumnName="promocion" />
+                <ScalarProperty Name="producto" ColumnName="producto" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="idPromocionAcumulacion" ColumnName="idPromocionAcumulacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -17,7 +17,7 @@
     <AssemblyName>Benavides.WEB</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -839,6 +839,16 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Benavides.BLL\Benavides.BLL.csproj">
+      <Project>{453ae016-8d56-49d6-a534-bdb91789f609}</Project>
+      <Name>Benavides.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Benavides.MODEL\Benavides.MODEL.csproj">
+      <Project>{f98a53c4-7dc5-4fa5-a22d-4e9a62d8e075}</Project>
+      <Name>Benavides.MODEL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -857,7 +867,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>10400</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:6624/</IISUrl>
+          <IISUrl>http://localhost/Benavides.WEB</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
