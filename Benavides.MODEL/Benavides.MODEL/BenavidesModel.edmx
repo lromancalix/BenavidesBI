@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BenavidesBIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BenavidesBIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblLaboratorio">
           <Key>
             <PropertyRef Name="idLaboratorio" />
@@ -79,7 +79,8 @@
             <End Role="tblPromocionesAcumulacion" EntitySet="tblPromocionesAcumulacion" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BenavidesBIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -90,30 +91,8 @@
           <Property Name="idLaboratorio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="laboratorio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="activo" Type="Boolean" />
-          <NavigationProperty Name="tblPromocionesAcumulacion" Relationship="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblLaboratorio" FromRole="tblLaboratorio" ToRole="tblPromocionesAcumulacion" />
+          <NavigationProperty Name="tblPromocionesAcumulacion" Relationship="Self.FK_tblPromocionesAcumulacion_tblLaboratorio" FromRole="tblLaboratorio" ToRole="tblPromocionesAcumulacion" />
         </EntityType>
-        <EntityType Name="tblSegmento">
-          <Key>
-            <PropertyRef Name="idSegmento" />
-          </Key>
-          <Property Name="idSegmento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="segmento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="activo" Type="Boolean" />
-          <NavigationProperty Name="tblPromocionesAcumulacion" Relationship="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblSegmento" FromRole="tblSegmento" ToRole="tblPromocionesAcumulacion" />
-        </EntityType>
-        <EntityContainer Name="BenavidesBIEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tblLaboratorio" EntityType="Self.tblLaboratorio" />
-          <EntitySet Name="tblSegmento" EntityType="Self.tblSegmento" />
-          <EntitySet Name="tblPromocionesAcumulacion" EntityType="BenavidesBIModel.tblPromocionesAcumulacion" />
-          <AssociationSet Name="FK_tblPromocionesAcumulacion_tblLaboratorio" Association="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblLaboratorio">
-            <End Role="tblLaboratorio" EntitySet="tblLaboratorio" />
-            <End Role="tblPromocionesAcumulacion" EntitySet="tblPromocionesAcumulacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblPromocionesAcumulacion_tblSegmento" Association="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblSegmento">
-            <End Role="tblSegmento" EntitySet="tblSegmento" />
-            <End Role="tblPromocionesAcumulacion" EntitySet="tblPromocionesAcumulacion" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="tblPromocionesAcumulacion">
           <Key>
             <PropertyRef Name="idPromocionAcumulacion" />
@@ -134,12 +113,21 @@
           <Property Name="idLaboratorio" Type="Int32" Nullable="false" />
           <Property Name="codigoRegala" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="fechaCreacion" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tblLaboratorio" Relationship="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblLaboratorio" FromRole="tblPromocionesAcumulacion" ToRole="tblLaboratorio" />
-          <NavigationProperty Name="tblSegmento" Relationship="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblSegmento" FromRole="tblPromocionesAcumulacion" ToRole="tblSegmento" />
+          <NavigationProperty Name="tblLaboratorio" Relationship="Self.FK_tblPromocionesAcumulacion_tblLaboratorio" FromRole="tblPromocionesAcumulacion" ToRole="tblLaboratorio" />
+          <NavigationProperty Name="tblSegmento" Relationship="Self.FK_tblPromocionesAcumulacion_tblSegmento" FromRole="tblPromocionesAcumulacion" ToRole="tblSegmento" />
+        </EntityType>
+        <EntityType Name="tblSegmento">
+          <Key>
+            <PropertyRef Name="idSegmento" />
+          </Key>
+          <Property Name="idSegmento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="segmento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="tblPromocionesAcumulacion" Relationship="Self.FK_tblPromocionesAcumulacion_tblSegmento" FromRole="tblSegmento" ToRole="tblPromocionesAcumulacion" />
         </EntityType>
         <Association Name="FK_tblPromocionesAcumulacion_tblLaboratorio">
-          <End Type="BenavidesBIModel.tblLaboratorio" Role="tblLaboratorio" Multiplicity="1" />
-          <End Type="BenavidesBIModel.tblPromocionesAcumulacion" Role="tblPromocionesAcumulacion" Multiplicity="*" />
+          <End Role="tblLaboratorio" Type="Self.tblLaboratorio" Multiplicity="1" />
+          <End Role="tblPromocionesAcumulacion" Type="Self.tblPromocionesAcumulacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblLaboratorio">
               <PropertyRef Name="idLaboratorio" />
@@ -150,8 +138,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblPromocionesAcumulacion_tblSegmento">
-          <End Type="BenavidesBIModel.tblSegmento" Role="tblSegmento" Multiplicity="1" />
-          <End Type="BenavidesBIModel.tblPromocionesAcumulacion" Role="tblPromocionesAcumulacion" Multiplicity="*" />
+          <End Role="tblSegmento" Type="Self.tblSegmento" Multiplicity="1" />
+          <End Role="tblPromocionesAcumulacion" Type="Self.tblPromocionesAcumulacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblSegmento">
               <PropertyRef Name="idSegmento" />
@@ -161,6 +149,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="BenavidesBIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblLaboratorio" EntityType="Self.tblLaboratorio" />
+          <EntitySet Name="tblPromocionesAcumulacion" EntityType="Self.tblPromocionesAcumulacion" />
+          <EntitySet Name="tblSegmento" EntityType="Self.tblSegmento" />
+          <AssociationSet Name="FK_tblPromocionesAcumulacion_tblLaboratorio" Association="Self.FK_tblPromocionesAcumulacion_tblLaboratorio">
+            <End Role="tblLaboratorio" EntitySet="tblLaboratorio" />
+            <End Role="tblPromocionesAcumulacion" EntitySet="tblPromocionesAcumulacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPromocionesAcumulacion_tblSegmento" Association="Self.FK_tblPromocionesAcumulacion_tblSegmento">
+            <End Role="tblSegmento" EntitySet="tblSegmento" />
+            <End Role="tblPromocionesAcumulacion" EntitySet="tblPromocionesAcumulacion" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -176,34 +177,34 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblPromocionesAcumulacion">
+            <EntityTypeMapping TypeName="BenavidesBIModel.tblPromocionesAcumulacion">
+              <MappingFragment StoreEntitySet="tblPromocionesAcumulacion">
+                <ScalarProperty Name="idPromocionAcumulacion" ColumnName="idPromocionAcumulacion" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="producto" ColumnName="producto" />
+                <ScalarProperty Name="promocion" ColumnName="promocion" />
+                <ScalarProperty Name="regla" ColumnName="regla" />
+                <ScalarProperty Name="limite" ColumnName="limite" />
+                <ScalarProperty Name="periodo" ColumnName="periodo" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+                <ScalarProperty Name="fechaSolicitud" ColumnName="fechaSolicitud" />
+                <ScalarProperty Name="cupon" ColumnName="cupon" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="idSegmento" ColumnName="idSegmento" />
+                <ScalarProperty Name="idLaboratorio" ColumnName="idLaboratorio" />
+                <ScalarProperty Name="codigoRegala" ColumnName="codigoRegala" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblSegmento">
             <EntityTypeMapping TypeName="BenavidesBIModel.tblSegmento">
               <MappingFragment StoreEntitySet="tblSegmento">
                 <ScalarProperty Name="idSegmento" ColumnName="idSegmento" />
                 <ScalarProperty Name="segmento" ColumnName="segmento" />
                 <ScalarProperty Name="activo" ColumnName="activo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblPromocionesAcumulacion">
-            <EntityTypeMapping TypeName="BenavidesBIModel.tblPromocionesAcumulacion">
-              <MappingFragment StoreEntitySet="tblPromocionesAcumulacion">
-                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
-                <ScalarProperty Name="codigoRegala" ColumnName="codigoRegala" />
-                <ScalarProperty Name="idLaboratorio" ColumnName="idLaboratorio" />
-                <ScalarProperty Name="idSegmento" ColumnName="idSegmento" />
-                <ScalarProperty Name="comentario" ColumnName="comentario" />
-                <ScalarProperty Name="cupon" ColumnName="cupon" />
-                <ScalarProperty Name="fechaSolicitud" ColumnName="fechaSolicitud" />
-                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
-                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
-                <ScalarProperty Name="periodo" ColumnName="periodo" />
-                <ScalarProperty Name="limite" ColumnName="limite" />
-                <ScalarProperty Name="regla" ColumnName="regla" />
-                <ScalarProperty Name="promocion" ColumnName="promocion" />
-                <ScalarProperty Name="producto" ColumnName="producto" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="idPromocionAcumulacion" ColumnName="idPromocionAcumulacion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

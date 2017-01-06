@@ -32,3 +32,9 @@ textarea {
 .user-menu {
     width:60%;
 }*/
+
+.modal-header-general {
+    background: #aed6f1 none repeat scroll 0 0;
+    border-bottom: 1px solid grey !important;
+}
+

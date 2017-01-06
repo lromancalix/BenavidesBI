@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bd7f7820392b443c93f849d99263a86d" Name="Diagram1">
+        <EntityTypeShape EntityType="BenavidesBIModel.tblLaboratorio" Width="1.5" PointX="1" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BenavidesBIModel.tblPromocionesAcumulacion" Width="1.5" PointX="3.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BenavidesBIModel.tblSegmento" Width="1.5" PointX="6.375" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblLaboratorio" ManuallyRouted="false" />
+        <AssociationConnector Association="BenavidesBIModel.FK_tblPromocionesAcumulacion_tblSegmento" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -23,6 +23,18 @@ namespace Benavides.WEB
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/benavides").Include(
+                "~/Scripts/Benavides/Benavides.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/adminLayout").Include(
+               "~/Scripts/Benavides/Laboratorio/AdminLayout.js"
+               ));
+
+            bundles.Add(new ScriptBundle("~/bundles/laboratorio").Include(
+                "~/Scripts/Benavides/Laboratorio/index.js"
+                ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));

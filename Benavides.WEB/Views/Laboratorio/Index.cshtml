@@ -1,0 +1,50 @@
+﻿@*@model Benavides.MODEL.tblLaboratorio*@
+
+<!--
+INDEX LABORATORIO    
+-->
+<section class="content-header">
+    <h1>
+        Benavides
+    <small>Laboratorios</small> cALIX
+    </h1>
+
+    <ol class="breadcrumb">
+        <li>
+            <button 
+                    class="btn btn-success active" 
+                    id="btn-nuevoLaboratorio">
+                <strong> Nuevo Laboratotio <i class="fa fa-plus"></i></strong>
+            </button>
+        </li>
+    </ol>
+</section>
+
+<section id="laboratorios">
+
+</section>
+
+<div id="div-datosLaboratorio" style="display:none;">
+    <div style="padding-left:25%;">
+        <input type="hidden" id="id-laboratorio" />
+        <div class="form-group">
+            <label for="txt-laboratorio">Laboratorio:</label>
+            <input type="text"
+                   class="form-control"
+                   id="txt-laboratorio"
+                   placeholder="Laboratorio">
+        </div>
+        <div class="form-group">
+            <label for="select-activo">Activo:</label>
+            <select id="select-activo"
+                    class="form-control">
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/laboratorio")
+
+

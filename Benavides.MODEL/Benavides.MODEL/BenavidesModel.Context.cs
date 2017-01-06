@@ -26,7 +26,7 @@ namespace Benavides.MODEL
         }
     
         public virtual DbSet<tblLaboratorio> tblLaboratorio { get; set; }
-        public virtual DbSet<tblSegmento> tblSegmento { get; set; }
         public virtual DbSet<tblPromocionesAcumulacion> tblPromocionesAcumulacion { get; set; }
+        public virtual DbSet<tblSegmento> tblSegmento { get; set; }
     }
 }
