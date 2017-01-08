@@ -11,7 +11,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @*TODO: Change App name*@
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Benavides BI</title>
 
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     @*Source Sans Pro from Google Fonts*@
@@ -42,7 +42,11 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/benavides")
+
+    @Styles.Render("~/Content/validate")
+
 </head>
 <body class="skin-blue">
 
@@ -84,10 +88,10 @@
                 <div class="modal-header modal-header-general">
                     <strong id="tituloModal">Titulo modal</strong>
                 </div>
-                <div class="modal-body modal-body-general"></div>
+                <div class="modal-body modal-body-general" id="modal-body-general"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-general-cancelar" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary btn-general-aceptar">Aceptar <i class="fa fa-check"></i></button>
+                    <button type="button" class="btn btn-primary btn-general-aceptar" id="btn-general-aceptar">Aceptar <i class="fa fa-check"></i></button>
                 </div>
             </div>
         </div>

@@ -20,30 +20,87 @@ INDEX LABORATORIO
     </ol>
 </section>
 
-<section id="laboratorios">
+<section id="laboratorios" style="margin-top:2%;">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <!-- SELECT2 EXAMPLE -->
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Laboratorios</h3>
+                    @*<div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>*@
+                </div>
+
+                <div class="box-body">
+
+                </div>
+
+                <div class="box-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+   
 
 </section>
 
-<div id="div-datosLaboratorio" style="display:none;">
-    <div style="padding-left:25%;">
-        <input type="hidden" id="id-laboratorio" />
-        <div class="form-group">
-            <label for="txt-laboratorio">Laboratorio:</label>
-            <input type="text"
-                   class="form-control"
-                   id="txt-laboratorio"
-                   placeholder="Laboratorio">
-        </div>
-        <div class="form-group">
-            <label for="select-activo">Activo:</label>
-            <select id="select-activo"
-                    class="form-control">
-                <option value="1">Activo</option>
-                <option value="0">Inactivo</option>
-            </select>
+
+<div class="modal fade"
+     id="modal-laboratorio"
+     tabindex="-1"
+     role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-header-general">
+                <strong id="tituloModal">Nuevo Laboratorio</strong>
+            </div>
+            <div class="modal-body validationEngineContainer" id="modal-body-laboratorio" style="padding-left:25%;">
+                    <input type="hidden" id="id-laboratorio" />
+                    <div class="form-group">
+                        <label for="txt-laboratorio">Laboratorio:</label>
+                        <input type="text"
+                               class="form-control validate[required]"
+                               id="txt-laboratorio"
+                               placeholder="Laboratorio">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Codigo Acumula</label>
+
+                        <input id="txt-claveAcumula"
+                               name="txt-claveAcumula"
+                               type="text"
+                               class="form-control validate[required]"
+                               style="width: 100%;"
+                               placeholder="SKU"
+                               value=""
+                               data-validation-engine="validate[required,custom[number]]"
+                               data-errormessage-value-missing="sku es requerido!"
+                               data-errormessage-custom-error="Debe ser numerico: 0123456789"
+                               data-errormessage="This is the fall-back error message." />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="select-activo">Activo:</label>
+                        <select id="select-activo"
+                                class="form-control">
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btn-laboratorio-aceptar">Aceptar <i class="fa fa-check"></i></button>
+            </div>
         </div>
     </div>
 </div>
+
 
 @Scripts.Render("~/bundles/laboratorio")
 

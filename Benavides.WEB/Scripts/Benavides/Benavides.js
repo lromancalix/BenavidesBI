@@ -15,6 +15,8 @@ BENAVIDES.app = (function ($, window, document, undefined) {
         //$("#" + idModal).modal("hide")
     }
 
+
+
     var ShowModal = function (idModal) {
         $("#" + idModal).modal("show");
     }
